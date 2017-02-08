@@ -52,7 +52,9 @@ public class ProjectApplication extends WebMvcConfigurerAdapter{
     
     public static void main(String[] args) throws Exception {
         SpringApplication.run(ProjectApplication.class, args);
-
+    }
+    public static void main1(String[] args) throws Exception {
+        SpringApplication.run(ProjectApplication.class, args);
     }
     /**
      * 页面跳转
