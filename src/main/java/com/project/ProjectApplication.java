@@ -53,7 +53,6 @@ public class ProjectApplication extends WebMvcConfigurerAdapter{
     public static void main(String[] args) throws Exception {
         SpringApplication.run(ProjectApplication.class, args);
         System.err.println("解决冲突文件");
-        System.out.print("解决11冲突文件");
     }
     /**
      * 页面跳转
