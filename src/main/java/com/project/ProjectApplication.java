@@ -52,7 +52,7 @@ public class ProjectApplication extends WebMvcConfigurerAdapter{
     
     public static void main(String[] args) throws Exception {
         SpringApplication.run(ProjectApplication.class, args);
-        System.err.println("解决冲突文件");
+        System.err.print("解决冲突文件");
     }
     /**
      * 页面跳转
@@ -63,7 +63,7 @@ public class ProjectApplication extends WebMvcConfigurerAdapter{
     @ApiIgnore
     public void index(HttpServletResponse response) throws IOException{
         response.sendRedirect("login/main");
-        System.err.println("解决冲突文件");
+        System.out.println("解决冲突文件");
     }
     /**
      * 配置文件上传bean
