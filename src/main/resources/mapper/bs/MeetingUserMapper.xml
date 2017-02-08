@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.project.module.bs.dao.MeetingUserMapper" >
+  <resultMap id="BaseResultMap" type="com.project.entity.MeetingUser" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="meeting_user_id" property="meetingUserId" jdbcType="INTEGER" />
+    <result column="meeting_id" property="meetingId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

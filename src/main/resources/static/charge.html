@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>支付宝及时到帐</title>
+<script type="text/javascript" src="js/pingpp.js"></script>
+<script src='static/ace/js/jquery.js'></script>
+<!-- 公共js -->
+<script src="js/common.js"></script>
+<script type="text/javascript">
+	$(function(){
+		doGet({
+			url:"https://127.0.0.1:8443/ping/charge",
+			modal:false,
+			success:function(charge){
+				pingpp.createPayment(charge, function(result, err){
+				    console.log(result);
+				    console.log(err.msg);
+				    console.log(err.extra);
+				    if (result == "success") {
+				        // 只有微信公众账号 wx_pub 支付成功的结果会在这里返回，其他的支付结果都会跳转到 extra 中对应的 URL。
+				    } else if (result == "fail") {
+				        // charge 不正确或者微信公众账号支付失败时会在此处返回
+				    } else if (result == "cancel") {
+				        // 微信公众账号支付取消支付
+				    }
+				});
+			}
+		});
+	});
+</script>
+</head>
+<body></body>
+</html>
+

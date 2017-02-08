@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.project.module.bs.dao.MeetingMapper" >
+  <resultMap id="BaseResultMap" type="com.project.entity.Meeting" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="meeting_id" property="meetingId" jdbcType="VARCHAR" />
+    <result column="meeting_name" property="meetingName" jdbcType="VARCHAR" />
+    <result column="infor" property="infor" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+    <result column="utime" property="utime" jdbcType="TIMESTAMP" />
+    <result column="uid" property="uid" jdbcType="VARCHAR" />
+    <result column="valid" property="valid" jdbcType="BIT" />
+  </resultMap>
+  <sql id="baseWhere">
+    <trim prefix="where" prefixOverrides="and | or">
+      <if test="meetingId != null and meetingId != ''">
+        and bm.meeting_id = #{meetingId}
+      </if>
+      <if test="meetingName != null and meetingName != ''">
+        and bm.meeting_name like #{onlyMeetingName}
+      </if>
+      <if test="keyword != null and keyword != ''">
+        and (bm.meeting_name like #{onlyKeyword} <!-- or 字段二 like #{onlyKeyword} -->)
+      </if>
+      <if test="infor != null and infor != ''">
+        and bm.infor = #{infor}
+      </if>
+      <if test="userId != null and userId != ''">
+        and bm.user_id = #{userId}
+      </if>
+      <if test="ctime != null">
+        and bm.ctime = #{ctime}
+      </if>
+      <if test="utime != null">
+        and bm.utime = #{utime}
+      </if>
+      <if test="uid != null and uid != ''">
+        and bm.uid = #{uid}
+      </if>
+      <if test="valid != null">
+        and bm.valid = #{valid}
+      </if>
+      <if test="startDate != null">
+        and bm.utime &gt; #{startDate}
+      </if>
+      <if test="endDate != null">
+        and bm.utime &lt; #{endDate}
+      </if>
+      <if test="name != null and name != ''">
+        and su.name like #{onlyName}
+      </if>
+    </trim>
+  </sql>
+  <select id="queryMapByCondition" resultType="map">
+    select distinct 
+      bm.meeting_id as meetingId,
+      bm.meeting_name as meetingName,
+      bm.infor as infor,
+      bm.user_id as userId,
+      bm.ctime as ctime,
+      bm.utime as utime,
+      bm.uid as uid,
+      bm.valid as valid,
+      su.name name
+    from bs_meeting bm
+    inner join sys_user su on su.user_id = bm.user_id
+    <include refid="baseWhere"></include>
+  </select>
+</mapper>

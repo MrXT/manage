@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.project.module.sys.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.project.entity.User" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+    <result column="uid" property="uid" jdbcType="VARCHAR" />
+    <result column="utime" property="utime" jdbcType="TIMESTAMP" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="valid" property="valid" jdbcType="BIT" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="baseWhere">
+    <trim prefix="where" prefixOverrides="and | or">
+      <if test="userId != null and userId != ''">
+        and su.user_id = #{userId}
+      </if>
+      <if test="username != null and username != ''">
+        and su.username like #{onlyUsername}
+      </if>
+      <if test="keyword != null and keyword != ''">
+        and (su.username like #{onlyKeyword} <!-- or 字段二 like #{onlyKeyword} -->)
+      </if>
+      <if test="name != null and name != ''">
+        and su.name like #{onlyName}
+      </if>
+      <if test="ctime != null">
+        and su.ctime = #{ctime}
+      </if>
+      <if test="uid != null and uid != ''">
+        and su.uid = #{uid}
+      </if>
+      <if test="utime != null">
+        and su.utime = #{utime}
+      </if>
+      <if test="password != null and password != ''">
+        and su.password = #{password}
+      </if>
+      <if test="valid != null">
+        and su.valid = #{valid}
+      </if>
+      <if test="salt != null and salt != ''">
+        and su.salt = #{salt}
+      </if>
+      <if test="phone != null and phone != ''">
+        and su.phone = #{phone}
+      </if>
+      <if test="startDate != null">
+        and su.utime &gt; #{startDate}
+      </if>
+      <if test="endDate != null">
+        and su.utime &lt; #{endDate}
+      </if>
+    </trim>
+  </sql>
+  <select id="queryMapByCondition" resultType="map">
+    select distinct 
+      su.user_id as userId,
+      su.username as username,
+      su.name as name,
+      su.ctime as ctime,
+      su.uid as uid,
+      su.utime as utime,
+      su.password as password,
+      su.valid as valid,
+      su.salt as salt,
+      su.phone as phone
+    from sys_user su
+    <include refid="baseWhere"></include>
+  </select>
+</mapper>
