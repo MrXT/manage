@@ -51,6 +51,7 @@ public class ProjectApplication extends WebMvcConfigurerAdapter{
     }
     
     public static void main(String[] args) throws Exception {
+        System.out.println(11);
         SpringApplication.run(ProjectApplication.class, args);
     }
     /**
