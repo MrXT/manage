@@ -40,7 +40,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.7</java.version>
-		<httpclient.version>4.5</httpclient.version><!-- 为什么这个删掉会出问题 -->
 	</properties>
 	<dependencies>
 		<!-- 内部包 start -->
