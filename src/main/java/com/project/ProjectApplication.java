@@ -65,7 +65,6 @@ public class ProjectApplication extends WebMvcConfigurerAdapter{
     @ApiIgnore
     public void index(HttpServletResponse response) throws IOException{
         response.sendRedirect("login/main");
-        System.out.println("解决冲突文件");
     }
     /**
      * 配置文件上传bean
