@@ -50,9 +50,9 @@ public class ProjectApplication extends WebMvcConfigurerAdapter{
         handlerAdapter.setWebBindingInitializer(new MyWebBinding());
     }
     
-    public static void main(String[] args) throws Exception {
-        System.out.println(11);
-        SpringApplication.run(ProjectApplication.class, args);
+    public static void main(String[] args1) throws Exception {
+        SpringApplication.run(ProjectApplication.class, args1);
+        System.out.println(22);
     }
     /**
      * 页面跳转
